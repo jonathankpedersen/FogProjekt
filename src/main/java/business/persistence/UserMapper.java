@@ -3,6 +3,7 @@ package business.persistence;
 import business.exceptions.UserException;
 import business.entities.User;
 
+import java.io.StringReader;
 import java.sql.*;
 
 public class UserMapper
@@ -18,13 +19,16 @@ public class UserMapper
     {
         try (Connection connection = database.connect())
         {
-            String sql = "INSERT INTO users (email, password, role) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO users (name, email, address, tele_number, password, role ) VALUES (?, ?, ?, ?, ?, ?)";
 
             try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
             {
-                ps.setString(1, user.getEmail());
-                ps.setString(2, user.getPassword());
-                ps.setString(3, user.getRole());
+                ps.setString(1, user.getName());
+                ps.setString(2, user.getEmail());
+                ps.setString(3, user.getAddress());
+                ps.setString(4,user.getTele_number());
+                ps.setString(5, user.getPassword());
+                ps.setString(6,user.getRole());
                 ps.executeUpdate();
                 ResultSet ids = ps.getGeneratedKeys();
                 ids.next();
@@ -46,7 +50,7 @@ public class UserMapper
     {
         try (Connection connection = database.connect())
         {
-            String sql = "SELECT id, role FROM users WHERE email=? AND password=?";
+            String sql = "SELECT id, name, address, tele_number,  role FROM users WHERE email=? AND password=?";
 
             try (PreparedStatement ps = connection.prepareStatement(sql))
             {
@@ -57,7 +61,11 @@ public class UserMapper
                 {
                     String role = rs.getString("role");
                     int id = rs.getInt("id");
-                    User user = new User(email, password, role);
+                    String name = rs.getString("name");
+                    String address = rs.getString("address");
+                    String tele_number = rs.getString("tele_number");
+
+                    User user = new User(name, email, address, tele_number, password, role);
                     user.setId(id);
                     return user;
                 } else
