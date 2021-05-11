@@ -12,9 +12,27 @@
         <div style="margin-top: 5em;">
             <form name="login" action="${pageContext.request.contextPath}/fc/registercommand" method="POST">
                 <div class="row mb-3">
+                    <label class="col-sm-1 col-form-label" for="name">Name</label>
+                    <div class="col-sm-4">
+                        <input id="name" class="form-control" type="text" name="name" value="${param.name}" placeholder="Enter your name">
+                    </div>
+                </div>
+                <div class="row mb-3">
                     <label class="col-sm-1 col-form-label" for="email">Email</label>
                     <div class="col-sm-4">
                         <input id="email" class="form-control" type="text" name="email" value="${param.email}" placeholder="Enter a valid email">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-1 col-form-label" for="address">Address</label>
+                    <div class="col-sm-4">
+                        <input id="address" class="form-control" type="text" name="address" value="${param.address}" placeholder="Enter your address">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-1 col-form-label" for="tele_number">Phone Number</label>
+                    <div class="col-sm-4">
+                        <input id="tele_number" class="form-control" type="text" name="tele_number" value="${param.tele_number}" placeholder="Enter your phone number">
                     </div>
                 </div>
                 <div class="row mb-3">
