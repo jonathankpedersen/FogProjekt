@@ -11,7 +11,7 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Login page
+         Order page
     </jsp:attribute>
 
     <jsp:attribute name="footer">
