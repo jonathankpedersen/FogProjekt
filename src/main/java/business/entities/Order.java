@@ -6,6 +6,7 @@ public class Order {
     int Carport_carport_Id;
     String status;
 
+
     public Order(double prisTotal, int kunde_kunde_Id, int carport_carport_Id, String status) {
         this.prisTotal = prisTotal;
         Kunde_kunde_Id = kunde_kunde_Id;

@@ -18,7 +18,7 @@ public class OrderMapper {
     {
         try (Connection connection = database.connect())
         {
-            String sql = "INSERT INTO users (prisTotal, Kunde_kunde_Id, Carport_carport_Id, status) VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO orders (prisTotal, Kunde_kunde_Id, Carport_carport_Id, status) VALUES (?, ?, ?, ?)";
 
             try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
             {

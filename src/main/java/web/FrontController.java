@@ -75,7 +75,7 @@ public class FrontController extends HttpServlet
             request.getRequestDispatcher("/errorpage.jsp").forward(request, response);
         }
     }
-
+//httpservlet metoder doget, dopost
     @Override
     protected void doGet(
             HttpServletRequest request,

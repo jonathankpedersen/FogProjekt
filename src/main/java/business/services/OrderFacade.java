@@ -19,8 +19,9 @@ public class OrderFacade {
 
     public Order createOrder() throws UserException
     {
-        Order order = new Order(pris, kunde_kunde_Id, carport_carport_Id, "Active");
-        orderMapper.createOrder(order);
+        //Order order = new Order(pris, kunde_kunde_Id, carport_carport_Id, "Active");
+        //orderMapper.createOrder(order);
+        Order order = null;
         return order;
     }
 }

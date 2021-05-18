@@ -19,6 +19,7 @@ public abstract class Command
 
     private static void initCommands(Database database)
     {
+        //Her ligges alle commands ind i hashmap
         commands = new HashMap<>();
         commands.put("index", new CommandUnprotectedPage("index"));
         commands.put("loginpage", new CommandUnprotectedPage("loginpage"));
@@ -29,12 +30,15 @@ public abstract class Command
         commands.put("customerpage", new CommandProtectedPage("customerpage", "customer"));
         commands.put("employeepage", new CommandProtectedPage("employeepage", "employee"));
         commands.put("orderpage", new CommandUnprotectedPage("orderpage"));
+        commands.put("customermateriallist", new CustomerMaterialList("customermateriallist", "customer"));
     }
 
     public static Command fromPath(
             HttpServletRequest request,
             Database db)
     {
+        //TODO: Kør som debug
+        //customermaterialpage er den action/streng der kommer ind her
         String action = request.getPathInfo().replaceAll("^/+", "");
         System.out.println("--> " + action);
 

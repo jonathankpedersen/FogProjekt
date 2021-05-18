@@ -16,7 +16,8 @@ public class OrderCommand extends CommandUnprotectedPage {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
-
+        //Husk længde og bredde
+        //Order order = new Order;
 
         return pageToShow;
     }
