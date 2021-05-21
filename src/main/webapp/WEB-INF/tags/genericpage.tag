@@ -17,14 +17,17 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/styles.css">
     <meta name="theme-color" content="#7952b3">
 </head>
+
 <body>
+
     <!--
         This header is inspired by this bootstrap
         example: https://getbootstrap.com/docs/5.0/examples/pricing/
+        style="background-color: darkblue"
     -->
 <header class="d-flex flex-column flex-md-row align-items-center p-3 pb-0 px-md-4 mb-4 bg-white border-bottom shadow-sm">
     <div class="h5 my-0 me-md-auto fw-normal">
-        <p>Demo Project for DAT 2. semester</p>
+        <img src="${pageContext.request.contextPath}/web_images/Fog_Logo.png" width="100" height="100"/>
         <p style="font-size: larger">
             <jsp:invoke fragment="header"/>
         </p>
@@ -64,6 +67,7 @@
 </header>
 
 <div id="body" class="container" style="min-height: 20vh;">
+
     <jsp:doBody/>
 </div>
 

@@ -1,26 +1,59 @@
 package web.commands;
 
+import business.entities.Carport;
+import business.entities.Order;
 import business.exceptions.UserException;
 import business.persistence.Database;
+import business.services.OrderFacade;
 import business.services.UserFacade;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.util.List;
 
-public class OrderCommand extends CommandUnprotectedPage {
-    private UserFacade userFacade;
+public class OrderCommand extends CommandProtectedPage {
+    private OrderFacade orderFacade;
 
-    public OrderCommand(String pageToShow) {
-        super(pageToShow);
+    public OrderCommand(String pageToShow, String role) {
+        super(pageToShow, role);
+        orderFacade = new OrderFacade(database);
     }
 
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
+    public String execute(HttpServletRequest request, HttpServletResponse response) {
+        int kundeId;
+
+        try {
+            kundeId = Integer.parseInt(request.getParameter("kundeId"));
+        } catch (NumberFormatException e){
+            kundeId = 1;
+        }
+
+        int length = Integer.parseInt(request.getParameter("length"));
+        int width = Integer.parseInt(request.getParameter("width"));
+        boolean shed = Boolean.parseBoolean(request.getParameter("shed"));
+        Order order = orderFacade.createOrder(kundeId, length, width, shed);
+
+        try {
+            List<Order> orderList = orderFacade.listOrderByCustomerId(1);
+            request.setAttribute("orderlist", orderList);
+        } catch (UserException u){
+            u.printStackTrace();
+        }
+
+        HttpSession session = request.getSession();
+        session.setAttribute("length", length);
+        session.setAttribute("width", width);
+        session.setAttribute("shed", shed);
+
+        //Return orderrecievedpage
+        //getParameter
         //Husk længde og bredde
-        //Order order = new Order;
 
         return pageToShow;
     }
+
 
     //TODO:Add error message for general issues e.g. "Something went wrong"
     //TODO:Add error message for invalid chararacters such as letter instead of numbers e.g. "Please enter numbers"

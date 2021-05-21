@@ -18,19 +18,22 @@
             <h2>Fog</h2>
 
             <div style="margin-top: 3em;margin-bottom: 3em;">
-                Main page
+                Welcome to Fog, here you can buy a carport.
             </div>
 
             <c:if test="${sessionScope.role == 'employee' }">
                 <p style="font-size: larger">This is what you can do,
-                    since your are logged in as an employee</p>
+                    since you are logged in as an employee</p>
                  <p><a href="fc/employeepage">Employee Page</a>
              </c:if>
 
              <c:if test="${sessionScope.role == 'customer' }">
-                <p style="font-size: larger">This is what you can do, since your
+                <p style="font-size: larger">This is what you can do, since you
                     are logged in as a customer</p>
-                <p><a href="fc/customerpage">Customer Page</a>
+                <!--<p><a href="fc/customerpage">Customer Page</a>-->
+            <form name="login" action="${pageContext.request.contextPath}/fc/customerpage"  method="POST">
+                <button class="btn btn-primary" type="submit" value="customerpage">Customer Page</button>
+            </form>
             </c:if>
 
         </div>

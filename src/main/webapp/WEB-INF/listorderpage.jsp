@@ -4,24 +4,22 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Material Page
+         Customer Page
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>
 
     <jsp:body>
         <h1>Hello ${sessionScope.email} </h1>
-        You are now logged in as a Customer.
+        You are now logged in as a Customer of Fog. Here are your orders.
         Role: ${sessionScope.role}
-        <p >
-            <p><a href="fc/customermaterialpage">Materials</a>
+       <c:forEach var="order" items="${requestScope.orderlist}">
+           <p>
 
-        <c:forEach items="${requestScope.matList}" var="item">
-            <p>${item}</p>
-        </c:forEach>
+               ${order}
+           </p>
+       </c:forEach>
 
-
-        </p>
     </jsp:body>
 
 </t:genericpage>

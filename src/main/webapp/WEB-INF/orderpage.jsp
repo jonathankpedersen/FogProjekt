@@ -11,32 +11,47 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Order page
+         Order Page
     </jsp:attribute>
 
     <jsp:attribute name="footer">
     </jsp:attribute>
 
-<head>
-    <title>Enter your carport measurements</title>
-</head>
-<jsp:body>
-<div class="row mb-3">
-    <label class="col-sm-1 col-form-label" for="length">Length</label>
-    <div class="col-sm-4">
-        <input id="length" class="form-control" type="length" name="length"  value="${param.length}"  placeholder="Enter the length">
-    </div>
-    <div class="row mb-3">
-        <label class="col-sm-1 col-form-label" for="width">width</label>
-        <div class="col-sm-4">
-            <input id="width" class="form-control" type="width" name="width"  value="${param.width}"  placeholder="Enter the width">
+    <jsp:body>
+Hello, this is the orderpage, here you can order a carport. Please enter measures in cm.
+
+        <div style="margin-top: 5em;">
+            <form name="order" action="${pageContext.request.contextPath}/fc/orderpage" method="POST">
+                <div class="row mb-3">
+                    <label class="col-sm-1 col-form-label" for="length">Length</label>
+                    <div class="col-sm-4">
+                        <input id="length" class="form-control" type="text" name="length" value="${param.length}" placeholder="Enter length">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-1 col-form-label" for="width">Width</label>
+                    <div class="col-sm-4">
+                        <input id="width" class="form-control" type="text" name="width" value="${param.width}" placeholder="Enter width">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-1 col-form-label" for="shed">Shed</label>
+                    <div class="col-sm-4">
+                        <input id="shed" class="form-control" type="text" name="shed" value="${param.shed}" placeholder="Add a shed?">
+                    </div>
+
+                </div>
+
+                <input class="btn btn-primary" type="submit" type="submit" value="Submit">
+            </form>
+
+            <c:if test="${requestScope.error != null }">
+                <p style="color:red">
+                        ${requestScope.error}
+                </p>
+            </c:if>
         </div>
-    </div>
-    <input type="checkbox" id="shed" name="shed" value="shed">
-    <label for="shed"> Add a shed</label><br>
-    <br/>
-    <input class="btn btn-primary" type="submit" type="submit" value="Submit">
-    </form>
-</div>
 </jsp:body>
+
+
 </t:genericpage>

@@ -3,9 +3,9 @@ package business.entities;
 public class Carport {
     String length;
     String width;
-    boolean shed;
+    String shed;
 
-    public Carport(String length, String width, boolean shed) {
+    public Carport(String length, String width, String shed) {
         this.length = length;
         this.width = width;
         this.shed = shed;
@@ -27,11 +27,11 @@ public class Carport {
         this.width = width;
     }
 
-    public boolean isShed() {
+    public String getShed() {
         return shed;
     }
 
-    public void setShed(boolean shed) {
+    public void setShed(String shed) {
         this.shed = shed;
     }
 }

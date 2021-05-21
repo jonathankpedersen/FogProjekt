@@ -4,7 +4,7 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Register as new User
+         Register as New User
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>
@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <label class="col-sm-1 col-form-label" for="tele_number">Phone Number</label>
+                    <label class="col-sm-1 col-form-label" for="tele_number">Phone</label>
                     <div class="col-sm-4">
                         <input id="tele_number" class="form-control" type="text" name="tele_number" value="${param.tele_number}" placeholder="Enter your phone number">
                     </div>

@@ -27,10 +27,12 @@ public abstract class Command
         commands.put("logoutcommand", new LogoutCommand(""));
         commands.put("registerpage", new CommandUnprotectedPage("registerpage"));
         commands.put("registercommand", new RegisterCommand(""));
-        commands.put("customerpage", new CommandProtectedPage("customerpage", "customer"));
+        commands.put("customerpage", new CommandProtectedPage("orderpage", "customer"));
         commands.put("employeepage", new CommandProtectedPage("employeepage", "employee"));
-        commands.put("orderpage", new CommandUnprotectedPage("orderpage"));
+        commands.put("orderpage", new OrderCommand("listorderpage", "customer"));
         commands.put("customermateriallist", new CustomerMaterialList("customermateriallist", "customer"));
+        commands.put("showorderpage", new ListOrderCommand("listorderpage", "customer"));
+        commands.put("showorderpageemployee", new ListOrderCommandEmp("listorderpage", "employee"));
     }
 
     public static Command fromPath(
