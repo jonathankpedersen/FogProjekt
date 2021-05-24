@@ -11,11 +11,11 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
-  `email` varchar(90) NOT NULL,
-  `address` varchar(90) NOT NULL,
-  `tele_number` INT NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `address` varchar(75) NOT NULL,
+  `tele_number` varchar(15) NOT NULL,
   `password` varchar(45) NOT NULL,
-  `role` varchar(20) NOT NULL DEFAULT 'customer',
+  `role` varchar(45) NOT NULL DEFAULT 'customer',
   PRIMARY KEY (`id`),
   UNIQUE KEY `email_UNIQUE` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;

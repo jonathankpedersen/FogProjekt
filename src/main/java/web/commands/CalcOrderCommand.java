@@ -12,28 +12,76 @@ public class CalcOrderCommand extends CommandProtectedPage{
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response){
-        Double width = Double.parseDouble(request.getParameter("width"));
-        Double length = Double.parseDouble(request.getParameter("length"));
-        Double numBeams = 0.0;
-        Double posts = 0.0;
-        if(Math.ceil(length/55)+1 > Math.ceil(length/60)+1){
-            numBeams = Math.ceil(length/60)+1;
+        double width = Double.parseDouble(request.getParameter("width"));
+        double length = Double.parseDouble(request.getParameter("length"));
+        double numBeams = Math.ceil(length/60)+1;
+        double beamLength = 0.0;
+        double postsX = 0.0;
+        double postsY = 0.0;
+        double postsTotal = 0.0;
+        double bolt = 0.0;
+        double Plastmo1 = 0.0; //600mm
+        double Plastmo2 = 0.0; //360mm
+        float fald = calculateTriangle(length);
+        double roofWidth = 109;
+
+        if(fald > 6){
+            roofWidth = 102;
         }else{
-            numBeams = Math.ceil(length/55)+1;
+            roofWidth = 95;
+        }
+        Plastmo1 = Math.ceil(width/roofWidth);
+
+        if(length > 600){
+            Plastmo2 = Math.ceil(width/roofWidth);
         }
 
-        if(length < 6.0){
-            posts = 4.0;
+        double numBeams2 = 0.0;
+        for(int i = 50; i <= 60; i++){
+            numBeams2 = Math.ceil(length/i)+1;
+            if(numBeams2 < numBeams){
+                numBeams = numBeams2;
+            }
+        }
+
+        if(length <= 480){
+            beamLength = 480;
+        }else if(length < 600){
+            beamLength = 600;
+        }else if(length > 600){
+            beamLength = 480;
+            numBeams = numBeams*2;
+        }
+
+        if(length < 600){
+            postsY = 2.0;
         }else{
-            posts = 6.0;
+            postsY = 3.0;
         }
 
-        if(width > 6.0){
-            posts = posts*1.5;
+        if(width < 600){
+            postsX = 2.0;
+        }else{
+            postsX = 3.0;
         }
+        postsTotal = postsX + postsY;
 
-        Double uni190mm = numBeams*2; //total mængde, unviversal 190mm beslag har både højre er forskellig fra venstre
+        bolt = postsTotal*2;
+
+        double uni190mm = numBeams*2; //total mængde, unviversal 190mm beslag har både højre er forskellig fra venstre
         Double beslagSkruer = Math.ceil((uni190mm*9)/250);
+
+        request.setAttribute("numBeams", numBeams);
+        request.setAttribute("beamLength", beamLength);
+        request.setAttribute("posts", postsTotal);
+        request.setAttribute("beslagSkruer", beslagSkruer);
         return pageToShow;
+    }
+
+    public float calculateTriangle(double length){
+        float result;
+        float C = (float) Math.sqrt(Math.pow(length, 2)-100);
+        result = (float) Math.acos((Math.pow(length, 2)+Math.pow(C, 2)-100)/(2*length*C));
+        return result*10;
     }
 }
