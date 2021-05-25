@@ -30,9 +30,9 @@ public abstract class Command
         commands.put("customerpage", new CommandProtectedPage("orderpage", "customer"));
         commands.put("employeepage", new CommandProtectedPage("employeepage", "employee"));
         commands.put("orderpage", new OrderCommand("listorderpage", "customer"));
-        commands.put("customermateriallist", new CustomerMaterialList("customermateriallist", "customer"));
+        commands.put("customermateriallist", new CustomerMaterialList("customermateriallist", "employee"));
         commands.put("showorderpage", new ListOrderCommand("listorderpage", "customer"));
-        commands.put("showorderpageemployee", new ListOrderCommandEmp("listorderpage", "employee"));
+        commands.put("listorderpageemp", new ListOrderCommandEmp("showorderpageemp", "employee"));
     }
 
     public static Command fromPath(

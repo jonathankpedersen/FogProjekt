@@ -9,6 +9,7 @@ import business.persistence.Database;
 import business.persistence.OrderMapper;
 import business.persistence.UserMapper;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,7 +40,6 @@ public class OrderFacade {
         List<Order> orderList = new ArrayList<>();
         orderList = orderMapper.getOrderByCustomerId(id);
 
-
         return orderList;
     }
 
@@ -50,4 +50,9 @@ public class OrderFacade {
         return orderList;
     }
 
+    public Order listOrderByOrderId(int id) throws UserException, SQLException {
+        Order order = orderMapper.getOrderByOrderId(id);
+
+        return order;
+    }
 }

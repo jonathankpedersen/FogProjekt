@@ -23,9 +23,10 @@ public class OrderCommand extends CommandProtectedPage {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         int kundeId;
+        HttpSession session = request.getSession();
 
         try {
-            kundeId = Integer.parseInt(request.getParameter("kundeId"));
+            kundeId = ((int) session.getAttribute("kundeId"));
         } catch (NumberFormatException e){
             kundeId = 1;
         }
@@ -36,13 +37,12 @@ public class OrderCommand extends CommandProtectedPage {
         Order order = orderFacade.createOrder(kundeId, length, width, shed);
 
         try {
-            List<Order> orderList = orderFacade.listOrderByCustomerId(1);
+            List<Order> orderList = orderFacade.listOrderByCustomerId(kundeId);
             request.setAttribute("orderlist", orderList);
         } catch (UserException u){
             u.printStackTrace();
         }
 
-        HttpSession session = request.getSession();
         session.setAttribute("length", length);
         session.setAttribute("width", width);
         session.setAttribute("shed", shed);
@@ -53,7 +53,6 @@ public class OrderCommand extends CommandProtectedPage {
 
         return pageToShow;
     }
-
 
     //TODO:Add error message for general issues e.g. "Something went wrong"
     //TODO:Add error message for invalid chararacters such as letter instead of numbers e.g. "Please enter numbers"

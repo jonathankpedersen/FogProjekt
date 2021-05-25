@@ -3,15 +3,16 @@ package business.entities;
 public class Order {
     int ordreId;
     double prisTotal;
-    int Kunde_kunde_Id;
+    int kunde_Id;
     int length;
     int width;
     boolean shed;
     String status;
+    int amount;
 
 
-    public Order(int kunde_kunde_Id,int length, int width, boolean shed) {
-        Kunde_kunde_Id = kunde_kunde_Id;
+    public Order(int kunde_Id,int length, int width, boolean shed) {
+        this.kunde_Id = kunde_Id;
         this.length = length;
         this.width = width;
         this.shed = shed;
@@ -19,7 +20,7 @@ public class Order {
     }
 
     public Order(int orderId, int id, int length, int width, boolean shed, double pris, String status) {
-        Kunde_kunde_Id = id;
+        this.kunde_Id = id;
         this.ordreId = orderId;
         this.length = length;
         this.width = width;
@@ -28,8 +29,27 @@ public class Order {
         this.status = status;
     }
 
+    public Order(int ordreId, double prisTotal, int kunde_Id, int length, int width, boolean shed, String status, int amount) {
+        this.ordreId = ordreId;
+        this.prisTotal = prisTotal;
+        this.kunde_Id = kunde_Id;
+        this.length = length;
+        this.width = width;
+        this.shed = shed;
+        this.status = status;
+        this.amount = amount;
+    }
+
     public void setOrdreId(int ordreId) {
         this.ordreId = ordreId;
+    }
+
+    public int getOrdreId() {
+        return ordreId;
+    }
+
+    public int getKunde_Id() {
+        return kunde_Id;
     }
 
     public double getPrisTotal() {
@@ -40,12 +60,16 @@ public class Order {
         this.prisTotal = prisTotal;
     }
 
+    public int getOrdreId(int ordreId){
+        return ordreId;
+    }
+
     public int getKunde_kunde_Id() {
-        return Kunde_kunde_Id;
+        return kunde_Id;
     }
 
     public void setKunde_kunde_Id(int kunde_kunde_Id) {
-        Kunde_kunde_Id = kunde_kunde_Id;
+        kunde_Id = kunde_kunde_Id;
     }
 
     public String getStatus() {

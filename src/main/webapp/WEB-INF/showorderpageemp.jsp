@@ -4,7 +4,7 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         View Order Page
+         Customer Page
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>
@@ -13,26 +13,20 @@
         <h1>Hello ${sessionScope.email} </h1>
         You are now logged in as a Customer of Fog. Here are your orders.
         Role: ${sessionScope.role}
+        <form method="post" action="customermateriallist" enctype=text/plain>
        <c:forEach var="order" items="${requestScope.orderlist}">
            <p>
+               <INPUT TYPE="radio" name="orderlist" value="${order.ordreId}"/>Order from customer number ${order.kunde_Id}
+               <!-- TODO: Det her skal pakkes ind så hver linje har en radioboks, skal pakkes ind i et formtag med action=-->
 
-               ${order}
            </p>
        </c:forEach>
-
-        <div class="row mb-3">
-            <label class="col-sm-1 col-form-label" for="orderId">Calculate Price</label>
-            <div class="col-sm-4">
-                <input id="orderId" class="form-control" type="text" name="orderId" value="${param.orderId}" placeholder="Enter order ID">
-            </div>
-        </div>
-
-        <input class="btn btn-primary" type="submit" type="submit" value="Submit">
+        <INPUT TYPE="submit" VALUE="submit" />
         </form>
-        <c:forEach items="${requestScope.price}" var="item">
-            <p>${item}</p>
-        </c:forEach>
 
+        <!--<form name="login" action="${pageContext.request.contextPath}/fc/orderpageemp"  method="POST">
+            <button class="btn btn-primary" type="submit" value="orderpage">Orders</button>-->
+        </form>
     </jsp:body>
 
 </t:genericpage>

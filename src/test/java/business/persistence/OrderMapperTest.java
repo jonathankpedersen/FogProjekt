@@ -20,7 +20,7 @@ class OrderMapperTest {
 
     @Test
     void createOrder() throws UserException {
-        Order order = new Order(1, 600, 300,true);
+        Order order = new Order(2, 780, 600,false);
         orderMapper.createOrder(order);
 
         assertEquals(1, order.getLength());
