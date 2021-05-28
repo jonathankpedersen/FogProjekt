@@ -122,24 +122,29 @@ public class OrderItemsMapper {
 
         }
 
-        public Order getOrderItemsByOrderId(int id) throws SQLException {
-            String sql = "SELECT * FROM ordre WHERE ordre_Id = ?";
+        public List<OrderItems> getOrderItemsByOrderId(int id) throws SQLException {
+        List<OrderItems> orderItemsList = new ArrayList<>();
+            String sql = "SELECT * FROM ordreItem WHERE ordre_Id = ?";
             Connection connection = database.connect();
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, id);
             ResultSet resultSet = ps.executeQuery();
+            while (resultSet.next()) {
+                //skal svarer til database
+                int kundeId = resultSet.getInt("Kunde_kunde_Id");
+                double pris = resultSet.getDouble("prisTotal");
+                int length = resultSet.getInt("length");
+                int width = resultSet.getInt("width");
+                boolean shed = resultSet.getBoolean("shed");
+                String status = resultSet.getString("status");
+                //OrderItems orderItems = new OrderItems(id, kundeId, length, width, shed, pris, status);
+                //orderItemsList.add(orderItems);
+            }
 
-            int kundeId = resultSet.getInt("Kunde_kunde_Id");
-            double pris = resultSet.getDouble("prisTotal");
-            int length = resultSet.getInt("length");
-            int width = resultSet.getInt("width");
-            boolean shed = resultSet.getBoolean("shed");
-            String status = resultSet.getString("status");
-
-            Order order = new Order(id, kundeId, length, width, shed, pris, status);
 
 
-            return order;
+
+            return orderItemsList;
         }
     }
 

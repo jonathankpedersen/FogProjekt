@@ -26,7 +26,8 @@ public class OrderItemsFacade {
 
         //Order order = new Order(pris, kunde_kunde_Id, carport_carport_Id, "Active");
         //orderMapper.createOrder(order);
-        OrderItems order = new OrderItems(kundeId, length, width, shed);
+        //OrderItems order = new OrderItems(kundeId, length, width, shed);
+        OrderItems orderItems = null;
         try {
             orderItemsMapper.createOrderItem(orderItems);
         } catch (UserException e) {
@@ -37,8 +38,13 @@ public class OrderItemsFacade {
 
     public List<OrderItems> listOrderItemsByCustomerId(int id) throws UserException {
         List<OrderItems> orderItemsList = new ArrayList<>();
-        orderItemsList = orderItemsMapper.getOrderItemsByOrderId(id);
+        try {
 
+
+            orderItemsList = orderItemsMapper.getOrderItemsByOrderId(id);
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
         return orderItemsList;
     }
 
@@ -50,8 +56,8 @@ public class OrderItemsFacade {
     }
 
     public Order listOrderItemsByOrderId(int id) throws UserException, SQLException {
-        Order order = orderItemsMapper.getOrderItemsByOrderId(id);
-
+        //Order order = orderItemsMapper.getOrderItemsByOrderId(id);
+Order order = null;
         return order;
     }
 }

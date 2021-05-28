@@ -1,12 +1,8 @@
 package web.commands;
 
-import business.entities.Carport;
 import business.entities.Order;
 import business.exceptions.UserException;
-import business.persistence.Database;
 import business.services.OrderFacade;
-import business.services.UserFacade;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -46,10 +42,6 @@ public class OrderCommand extends CommandProtectedPage {
         session.setAttribute("length", length);
         session.setAttribute("width", width);
         session.setAttribute("shed", shed);
-
-        //Return orderrecievedpage
-        //getParameter
-        //Husk længde og bredde
 
         return pageToShow;
     }

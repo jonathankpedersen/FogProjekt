@@ -4,7 +4,7 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Customer Page
+         Show Orders
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>

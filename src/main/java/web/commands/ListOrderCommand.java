@@ -1,6 +1,6 @@
 package web.commands;
 
-import business.entities.CalculateOrderItems;
+import business.services.CalculateOrderItems;
 import business.entities.Order;
 import business.exceptions.UserException;
 import business.services.OrderFacade;
@@ -8,7 +8,6 @@ import business.services.OrderFacade;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ListOrderCommand extends CommandProtectedPage {
