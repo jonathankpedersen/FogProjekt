@@ -22,12 +22,7 @@
             <button class="btn btn-primary" type="submit" value="showorderpage">Orders</button>
         </form>
         </p>
-        <p>
-        <form name="login" action="${pageContext.request.contextPath}/fc/orderpageemp"  method="POST">
-            <button class="btn btn-primary" type="submit" value="orderpage">Orders</button>
-        </form>
 
-        </p>
 
     </jsp:body>
 </t:genericpage>

@@ -13,20 +13,15 @@
         <h1>Hello ${sessionScope.email} </h1>
         You are now logged in as a Customer of Fog.
         Role: ${sessionScope.role}
-        <p >
-            <!--<p><a href="customermateriallist">Materials</a>-->
-        <form name="login" action="${pageContext.request.contextPath}/fc/customermateriallist"  method="POST">
-            <button class="btn btn-primary" type="submit" value="customermateriallist">Materials</button>
-        </form>
-        </p>
+
         <p>
-        <form name="login" action="${pageContext.request.contextPath}/fc/showorderpage"  method="POST">
-        <button class="btn btn-primary" type="submit" value="showorderpage">Orders</button>
+        <form name="login" action="${pageContext.request.contextPath}/fc/listorderpage"  method="POST">
+        <button class="btn btn-primary" type="submit" value="listorderpage">Show Orders</button>
         </form>
         </p>
         <p>
         <form name="login" action="${pageContext.request.contextPath}/fc/orderpage"  method="POST">
-            <button class="btn btn-primary" type="submit" value="orderpage">Orders</button>
+            <button class="btn btn-primary" type="submit" value="orderpage">Place Order</button>
         </form>
         </p>
 

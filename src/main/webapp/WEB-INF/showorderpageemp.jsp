@@ -11,7 +11,7 @@
 
     <jsp:body>
         <h1>Hello ${sessionScope.email} </h1>
-        You are now logged in as a Customer of Fog. Here are your orders.
+        You are now logged in as an Employee of Fog. Here the orders.
         Role: ${sessionScope.role}
         <form method="post" action="customermateriallist" enctype=text/plain>
        <c:forEach var="order" items="${requestScope.orderlist}">

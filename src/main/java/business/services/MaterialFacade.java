@@ -13,12 +13,12 @@ public class MaterialFacade {
         this.database = database;
 
     }
+    //TODO: Materialfacade skal virke
 
     public List getAllMaterial(){
-        List<String> materialList = new ArrayList<String>();
-        //List<Material> materialList = new ArrayList<String>();
+        List<String> materialList = new ArrayList<>();
+        //List<Material> materialList = new ArrayList<>();
         //TODO: Tag strengen og lav den til et objekt
-        //TODO: Material klasse og materialtabel skal passe sammen ca. 1:1
         //Stolper, spærtræ
         //97x97_mm_trykimp_Stolpe_300_11_stk_Stolper_nedgraves_90_cm_i_jord
         //97x97-trykimp_Stolpe-300-Stolper-nedgraves_90_cm_i_jord

@@ -11,7 +11,6 @@ public class OrderItems {
     int ordreId;
 
 
-    //OrderItems klassen skal matche orderitem tabellen, check
     public OrderItems(Material material, int amount) {
         this.material = material;
         this.amount = amount;

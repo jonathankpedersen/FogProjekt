@@ -21,7 +21,6 @@ public class ListOrderCommand extends CommandProtectedPage {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response)  {
         //TODO: Find all orders by customerID and return
-        //TODO: Find en entitet-Order, check
         //TODO: Find facaden til entiten - Lav metoden
         //int customerId = request.getParameter("kundeId");
 

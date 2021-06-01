@@ -23,26 +23,21 @@ OrderFacade orderFacade;
         materialFacade = new MaterialFacade(database);
     }
     //Har materialeliste og ordre
-//TODO: Materialfacade skal virke
     //Der skal komme ordreID ind et sted
     //TODO:OrderItems skal sendes med. Antal af materialer skal med andetsteds fra. Kan beregnes ud fra indsendte mål.
     //TODO:Lav en calculator i stedet for en facade der kan opnå dette
-    //Forstå flow, begynd beregning af hvor mange materialer ud fra eksisterende ordrer
-    //Materiale og
+    //begynd beregning af hvor mange materialer ud fra eksisterende ordrer
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         List<String> materialList = materialFacade.getAllMaterial();
         //TODO: Dynamisk beregning af spær
         //det skal kunne ses
-
-        //SimpleOrder simpleOrder = new SimpleOrder(1,1,600, 780);
         //TODO: Hent ordreId fra requestobjektet
         //TODO: Det vil sige: google jsp retrieve value from radio button
         //TODO: Fremstil orderItems ved at kombinere materialer med de ønskede mål
-        //TODO: Lav en beregner som beregner antallet af spær ud fra den ønskede længde
-        try {
 
+        try {
             Order order = orderFacade.listOrderByOrderId(1);
 
             List<OrderItems> orderedItems = new ArrayList<>();
