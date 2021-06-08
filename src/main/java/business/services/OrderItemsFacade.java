@@ -16,18 +16,17 @@ public class OrderItemsFacade {
     OrderItems orderItems;
     //double pris; //Ændres til udregning af prisen
 
-    public OrderItemsFacade(Database database /*double pris*/)
-    {
+    public OrderItemsFacade(Database database /*double pris*/) {
         orderItemsMapper = new OrderItemsMapper(database);
         //this.pris = pris;
     }
 
     public OrderItems createOrderItems(int kundeId, int length, int width, boolean shed) {
-
         //Order order = new Order(pris, kunde_kunde_Id, carport_carport_Id, "Active");
         //orderMapper.createOrder(order);
         //OrderItems order = new OrderItems(kundeId, length, width, shed);
         OrderItems orderItems = null;
+
         try {
             orderItemsMapper.createOrderItem(orderItems);
         } catch (UserException e) {
@@ -38,9 +37,8 @@ public class OrderItemsFacade {
 
     public List<OrderItems> listOrderItemsByCustomerId(int id) throws UserException {
         List<OrderItems> orderItemsList = new ArrayList<>();
+
         try {
-
-
             orderItemsList = orderItemsMapper.getOrderItemsByOrderId(id);
         } catch (SQLException e){
             e.printStackTrace();
@@ -55,9 +53,12 @@ public class OrderItemsFacade {
         return orderList;
     }
 
-    public Order listOrderItemsByOrderId(int id) throws UserException, SQLException {
-        //Order order = orderItemsMapper.getOrderItemsByOrderId(id);
-Order order = null;
-        return order;
+    public List<OrderItems> listOrderItemsByOrderId(int id) throws SQLException {
+        List<OrderItems> orderItemsList = new ArrayList<>();
+        orderItemsList = orderItemsMapper.getOrderItemsByOrderId(id);
+
+        return orderItemsList;
     }
+
+
 }

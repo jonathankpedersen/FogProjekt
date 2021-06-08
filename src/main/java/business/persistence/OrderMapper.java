@@ -82,7 +82,6 @@ public class OrderMapper {
             throw new UserException(ex.getMessage());
         }
 
-
     }
 
     public List<Order> getAllOrders() throws UserException {
@@ -140,6 +139,11 @@ public class OrderMapper {
 
 
         return order;
+    }
+
+    public void updateOrderStatus(Order order) {
+        //TODO: Lav sql update
+        //String sql = UPDATE
     }
 
     //getAllOrders

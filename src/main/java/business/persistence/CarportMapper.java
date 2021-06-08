@@ -11,6 +11,7 @@ import java.sql.Statement;
 
 public class CarportMapper {
     private Database database;
+    //redundant?
 
     public CarportMapper(Database database)
     {

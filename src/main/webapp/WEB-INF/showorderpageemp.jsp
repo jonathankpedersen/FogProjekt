@@ -13,12 +13,11 @@
         <h1>Hello ${sessionScope.email} </h1>
         You are now logged in as an Employee of Fog. Here the orders.
         Role: ${sessionScope.role}
-        <form method="post" action="customermateriallist" enctype=text/plain>
+        <form method="post" action="customermateriallist">
        <c:forEach var="order" items="${requestScope.orderlist}">
            <p>
-               <INPUT TYPE="radio" name="orderlist" value="${order.ordreId}"/>Order from customer number ${order.kunde_Id}
+               <INPUT TYPE="radio" name="orderid" value="${order.ordreId}"/>Order ${order.ordreId} ${order.status} from customer number ${order.kunde_Id}
                <!-- TODO: Det her skal pakkes ind så hver linje har en radioboks, skal pakkes ind i et formtag med action=-->
-
            </p>
        </c:forEach>
         <INPUT TYPE="submit" VALUE="submit" />

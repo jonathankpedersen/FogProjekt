@@ -1,16 +1,19 @@
 package business.services;
 
+import business.entities.Material;
 import business.persistence.Database;
-import javafx.scene.paint.Material;
+import business.persistence.MaterialMapper;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MaterialFacade {
     Database database;
+    MaterialMapper materialMapper;
 
     public MaterialFacade(Database database) {
         this.database = database;
+        this.materialMapper = new MaterialMapper(database);
 
     }
     //TODO: Materialfacade skal virke
@@ -33,6 +36,11 @@ public class MaterialFacade {
         materialList.add(rafters);
 
         return materialList;
+    }
+    public Material getMaterialByName(String name){
+        Material material = materialMapper.getMaterialByName(name);
+
+        return material;
     }
 
 }

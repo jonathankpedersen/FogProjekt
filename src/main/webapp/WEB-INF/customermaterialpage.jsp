@@ -11,10 +11,16 @@
 
     <jsp:body>
         <h1>Hello ${sessionScope.email} </h1>
-        You are now logged in as an employee.
+        You are now logged in as an employee of Fog.
         Role: ${sessionScope.role}
-        <p >
-
+        <p>
+        <c:forEach var="orderItem" items="${requestScope.orderItems}">
+            <p>
+                    ${orderItem.ordreId}_${orderItem.description}_${orderItem.price}
+            </p>
+        </c:forEach>
+<!--TODO: Hent ordreId fra requestobjektet.
+        Det vil sige: google jsp retrieve value from radio button-->
 
         </p>
     </jsp:body>
