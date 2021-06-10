@@ -18,7 +18,7 @@ public class MaterialFacade {
     }
     //TODO: Materialfacade skal virke
 
-    public List getAllMaterial(){
+    public List getAllMaterial() {
         List<String> materialList = new ArrayList<>();
         //List<Material> materialList = new ArrayList<>();
         //TODO: Tag strengen og lav den til et objekt
@@ -37,7 +37,8 @@ public class MaterialFacade {
 
         return materialList;
     }
-    public Material getMaterialByName(String name){
+
+    public Material getMaterialByName(String name) {
         Material material = materialMapper.getMaterialByName(name);
 
         return material;

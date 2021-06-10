@@ -4,6 +4,8 @@ import business.Util.Conf;
 import business.entities.Material;
 import business.entities.Order;
 import business.entities.OrderItems;
+import business.exceptions.UserException;
+import business.persistence.OrderItemsMapper;
 import business.persistence.OrderMapper;
 import business.services.*;
 
@@ -31,6 +33,8 @@ public class CustomerMaterialList extends CommandProtectedPage {
         List<String> materialList = materialFacade.getAllMaterial();
         OrderItemsFacade orderItemsFacade = new OrderItemsFacade(database);
         OrderMapper orderMapper = new OrderMapper(database);
+        OrderItemsMapper orderItemsMapper = new OrderItemsMapper(database);
+        //TODO: OrderItemsmapper og facade skal passe sammen
         Calculator calculator = new Calculator();
         int ordreId = Integer.parseInt(request.getParameter("orderid"));
 
@@ -38,6 +42,7 @@ public class CustomerMaterialList extends CommandProtectedPage {
         try {
             orderItemsList = orderItemsFacade.listOrderItemsByOrderId(ordreId);
             request.setAttribute("orderItems", orderItemsList);
+            request.setAttribute("order", orderMapper.getOrderByOrderId(ordreId));
             System.out.println(orderItemsList);
         } catch (SQLException e) {
             //computing number of beams, poles and rafter
@@ -49,24 +54,34 @@ public class CustomerMaterialList extends CommandProtectedPage {
                 int numberOfRafters = calculator.getRafter(order.getLength());
 
                 //orderItems1 = new OrderItems(15, 1, "Spær, monteres på rem", 630, 600);
+                //(description, price, length, amount, Materialer_materiale_Id, ordre_Id)
                 Material myRafter = materialFacade.getMaterialByName("spær_");
-                //spørg Thorbjørn
-                OrderItems orderItems = orderItemsFacade.createOrderItems(numberOfBeams, order.getKunde_Id(), myRafter.getDescription(), Conf.DEFAULTRAFTERLENGTH);
+                Material myPole = materialFacade.getMaterialByName("stolpe_");
+                Material myBeam = materialFacade.getMaterialByName("rem_");
 
-                //TODO:Tilføj description i materiale, og i database
+                //int numOfMaterials, int materialeId, String description, int length, int ordreId, double price
+
+                double calcPriceRafter = calculator.getMaterialPrice(myRafter.getPris_pr_enhed(), order.getWidth(), numberOfRafters);
+                double calcPricePole = calculator.getMaterialPrice(myPole.getPris_pr_enhed(), order.getWidth(), numberOfPoles);
+                double calcPriceBeam = calculator.getMaterialPrice(myBeam.getPris_pr_enhed(), order.getWidth(), numberOfBeams);
+
+                OrderItems orderItemsRafter = orderItemsMapper.createOrderItem(numberOfRafters, myRafter.getMateriale_Id(), myRafter.getDescription(), order.getWidth(), order.getOrdreId(), calcPriceRafter);
+                OrderItems orderItemsPole = orderItemsMapper.createOrderItem(numberOfPoles, myPole.getMateriale_Id(), myPole.getDescription(), order.getWidth(), order.getOrdreId(), calcPricePole);
+                OrderItems orderItemsBeam = orderItemsMapper.createOrderItem(numberOfBeams, myBeam.getMateriale_Id(), myBeam.getDescription(), order.getWidth(), order.getOrdreId(), calcPriceBeam);
+
+                orderItemsList.add(orderItemsRafter);
+                orderItemsList.add(orderItemsPole);
+                orderItemsList.add(orderItemsBeam);
+
+                request.setAttribute("orderItemsList", orderItemsList);
+                request.setAttribute("order", orderMapper.getOrderByOrderId(ordreId));
+
                 //TODO: Find materialet via service
 
-            } catch (SQLException s) {
+            } catch (SQLException | UserException s) {
                 s.printStackTrace();
             }
         }
-
-
-        //TODO: Hvis itemList ikke findes, kan orderItems laves i try-catchen
-        //TODO: Hvis den ikke har en liste, så skal vi have en calculateOrderItems.
-
-        //TODO: Beregn antal og prisen på det antal enheder der laves.
-        //TODO: Lav en calculator som kan returnere dette
 
         //Det der kommer fra jsp er key-value
         //name = key, value = returværdien
@@ -74,7 +89,6 @@ public class CustomerMaterialList extends CommandProtectedPage {
         //TODO: Dynamisk beregning af spær
         //det skal kunne ses
         //TODO: Fremstil orderItems ved at kombinere materialer med de ønskede mål
-
 
         return pageToShow;
     }

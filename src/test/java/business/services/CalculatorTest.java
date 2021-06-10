@@ -20,4 +20,14 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    void testGetRaftersPrice() {
+        double expected = 6300;
+        double actual = calculator.getMaterialPrice(70, 600, 15);
+
+        assertEquals(expected, actual, 0.01);
+    }
+
+
 }

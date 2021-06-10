@@ -16,10 +16,12 @@ public class Calculator {
         return numOfRafter;
     }
 
-    //default
-    public double getRafterPrice(int pricePrUnit, int length){
-        int price = (length/55)*pricePrUnit;
+    public double getMaterialPrice(double pricePrUnit, int length, int numberOfItems){
+        double price = (length/100*numberOfItems*pricePrUnit);
 
         return price;
     }
+
+    //TODO: Beregn antal og prisen på det antal enheder der laves.
+    //TODO: Lav en calculator som kan returnere dette
 }

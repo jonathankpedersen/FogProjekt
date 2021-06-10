@@ -60,9 +60,9 @@ class OrderItemsMapperTest {
     @Test
     void createOrderItem() throws UserException {
         //arrayliste?
-        orderItemsMapper.createOrderItem(orderItems);
-        orderItemsMapper.createOrderItem(orderItems1);
-        orderItemsMapper.createOrderItem(orderItems2);
+        //orderItemsMapper.createOrderItem(orderItems);
+        //orderItemsMapper.createOrderItem(orderItems1);
+        //orderItemsMapper.createOrderItem(orderItems2);
 
 
         //int matId, String description, double price, int length

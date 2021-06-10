@@ -27,11 +27,11 @@ public class OrderItemsFacade {
         //OrderItems order = new OrderItems(kundeId, length, width, shed);
         OrderItems orderItems = null;
 
-        try {
+        /*try {
             orderItemsMapper.createOrderItem(orderItems);
         } catch (UserException e) {
             e.printStackTrace();
-        }
+        }*/
         return orderItems;
     }
 

@@ -11,7 +11,7 @@
 
     <jsp:body>
         <h1>Hello ${sessionScope.email} </h1>
-        You are now logged in as an employee of Fog.
+        You are now logged in as an employee of Fog, and looking at orders.${requestScope.order.ordreId}
         Role: ${sessionScope.role}
         <p>
         <c:forEach var="orderItem" items="${requestScope.orderItems}">
@@ -20,7 +20,8 @@
             </p>
         </c:forEach>
 <!--TODO: Hent ordreId fra requestobjektet.
-        Det vil sige: google jsp retrieve value from radio button-->
+        Det vil sige: google jsp retrieve value from radio button
+        requestobjekt mister information?-->
 
         </p>
     </jsp:body>
