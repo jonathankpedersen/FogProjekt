@@ -16,7 +16,7 @@
         <p>
         <c:forEach var="orderItem" items="${requestScope.orderItems}">
             <p>
-                    ${orderItem.ordreId}_${orderItem.description}_${orderItem.price}
+                    ${orderItem.ordreId}_${orderItem.description}_${orderItem.amount}_${orderItem.price}
             </p>
         </c:forEach>
 <!--TODO: Hent ordreId fra requestobjektet.

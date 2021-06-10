@@ -1,4 +1,5 @@
 package business.services;
+
 import business.Util.Conf;
 
 public class Calculator {
@@ -17,7 +18,7 @@ public class Calculator {
     }
 
     public double getMaterialPrice(double pricePrUnit, int length, int numberOfItems){
-        double price = (length/100*numberOfItems*pricePrUnit);
+        double price = ((length/100.0)*numberOfItems*pricePrUnit);
 
         return price;
     }

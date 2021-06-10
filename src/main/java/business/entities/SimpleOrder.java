@@ -6,6 +6,7 @@ public class SimpleOrder {
     int length;
     int width;
     //SimpleOrder simpleOrder = new SimpleOrder(1,1,600, 780);
+    //class redundant?
     public SimpleOrder(int id, int kundeId, int length, int width) {
         this.id = id;
         this.kundeId = kundeId;
