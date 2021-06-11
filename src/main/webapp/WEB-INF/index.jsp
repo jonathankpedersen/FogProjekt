@@ -22,15 +22,18 @@
             </div>
 
             <c:if test="${sessionScope.role == 'employee' }">
-                <p style="font-size: larger">This is what you can do,
+                <p style="font-size: medium">This is what you can do,
                     since you are logged in as an employee</p>
-                 <p><a href="fc/employeepage">Employee Page</a>
+                 <p>
+                <form name="login" action="${pageContext.request.contextPath}/fc/employeepage"  method="POST">
+                    <button class="btn btn-primary" type="submit" value="employeepage">Employee Page</button>
+                </form>
              </c:if>
 
              <c:if test="${sessionScope.role == 'customer' }">
-                <p style="font-size: larger">This is what you can do, since you
+                <p style="font-size: medium">This is what you can do, since you
                     are logged in as a customer</p>
-                <!--<p><a href="fc/customerpage">Customer Page</a>-->
+
             <form name="login" action="${pageContext.request.contextPath}/fc/customerpage"  method="POST">
                 <button class="btn btn-primary" type="submit" value="customerpage">Customer Page</button>
             </form>

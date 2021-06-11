@@ -11,16 +11,36 @@
 
     <jsp:body>
         <h1>Hello ${sessionScope.email} </h1>
-        You are now logged in as a Customer of Fog. Here are your orders.
-        Role: ${sessionScope.role}
+        You are now logged in as a Customer of Fog. Role: ${sessionScope.role}
+        </br>
+        Here are your orders:
        <c:forEach var="order" items="${requestScope.orderlist}">
-           <p>
 
-               ${order}
+           <p>
+           <table class="table">
+               <thead>
+               <tr>
+                   <th scope="col">OrderID</th>
+                   <th scope="col">Length</th>
+                   <th scope="col">Width</th>
+                   <th scope="col">Shed</th>
+                   <th scope="col">Status</th>
+               </tr>
+               </thead>
+               <tbody>
+               <tr>
+                   <td>${order.ordreId}</td>
+                   <td>${order.length}</td>
+                   <td>${order.width}</td>
+                   <td>${order.shed}</td>
+                   <td>${order.status}</td>
+               </tr>
+               </tbody>
+           </table>
            </p>
        </c:forEach>
 
-        <div class="row mb-3">
+        <!--<div class="row mb-3">
             <label class="col-sm-1 col-form-label" for="orderId">Calculate Price</label>
             <div class="col-sm-4">
                 <input id="orderId" class="form-control" type="text" name="orderId" value="${param.orderId}" placeholder="Enter order ID">
@@ -31,7 +51,7 @@
         </form>
         <c:forEach items="${requestScope.price}" var="item">
             <p>${item}</p>
-        </c:forEach>
+        </c:forEach>-->
 
     </jsp:body>
 

@@ -35,6 +35,7 @@ public abstract class Command
         commands.put("customermateriallist", new CustomerMaterialList("customermaterialpage", "employee"));
         commands.put("showorderpage", new ListOrderCommand("listorderpage", "customer"));
         commands.put("listorderpageemp", new ListOrderCommandEmp("showorderpageemp", "employee"));
+        //commands.put("orderplaced", new CommandProtectedPage("orderplaced", "customer"));
 
     }
 

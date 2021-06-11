@@ -11,12 +11,15 @@
 
     <jsp:body>
         <h1>Hello ${sessionScope.email} </h1>
-        You are now logged in as an Employee of Fog. Here the orders.
-        Role: ${sessionScope.role}
+        You are now logged in as an Employee of Fog. Role: ${sessionScope.role}
+        </br>
+        Here are the orders:
         <form method="post" action="customermateriallist">
        <c:forEach var="order" items="${requestScope.orderlist}">
+           </br>
            <p>
-               <INPUT TYPE="radio" name="orderid" value="${order.ordreId}"/>Order ${order.ordreId} ${order.status} from customer number ${order.kunde_Id}
+
+               <INPUT TYPE="radio" name="orderid" value="${order.ordreId}"/> Order ${order.ordreId} ${order.status} from customer number ${order.kunde_Id}
                <!-- TODO: Det her skal pakkes ind så hver linje har en radioboks, skal pakkes ind i et formtag med action=-->
            </p>
        </c:forEach>
