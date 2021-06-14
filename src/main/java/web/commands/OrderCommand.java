@@ -32,6 +32,7 @@ public class OrderCommand extends CommandProtectedPage {
             width = Integer.parseInt(request.getParameter("width"));
             shed = Boolean.parseBoolean(request.getParameter("shed"));
             order = orderFacade.createOrder(kundeId, length, width, shed);
+
         } catch (NumberFormatException e) {
             kundeId = 1;
             length = 0;

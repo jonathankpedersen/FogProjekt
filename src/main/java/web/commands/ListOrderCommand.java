@@ -22,10 +22,10 @@ public class ListOrderCommand extends CommandProtectedPage {
     public String execute(HttpServletRequest request, HttpServletResponse response)  {
         //TODO: Find all orders by customerID and return
         //TODO: Find facaden til entiten - Lav metoden
-        //int customerId = request.getParameter("kundeId");
+        int customerId = Integer.parseInt(request.getParameter("kundeId"));
 
         try {
-            List<Order> orderList = orderFacade.listOrderByCustomerId(1);
+            List<Order> orderList = orderFacade.listOrderByCustomerId(customerId);
             request.setAttribute("orderlist", orderList);
             /*List<Integer> priceList = new ArrayList<>();
             for (int i = 0; i < orderList.size(); i++){
@@ -39,7 +39,6 @@ public class ListOrderCommand extends CommandProtectedPage {
             u.printStackTrace();
         }
         try {
-
 
             int orderId = Integer.parseInt(request.getParameter("orderId"));
             Order order = orderFacade.listOrderByOrderId(orderId);

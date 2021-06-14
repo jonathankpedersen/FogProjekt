@@ -21,7 +21,7 @@
 Hello, this is the orderpage, here you can order a carport. Please enter measures in cm.
 
         <div style="margin-top: 5em;">
-            <form name="order" action="${pageContext.request.contextPath}/fc/orderpage" method="POST">
+            <form name="order" action="${pageContext.request.contextPath}/fc/listorderpage" method="POST">
                 <div class="row mb-3">
                     <label class="col-sm-1 col-form-label" for="length">Length</label>
                     <div class="col-sm-4">
