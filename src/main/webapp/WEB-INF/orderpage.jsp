@@ -25,13 +25,47 @@ Hello, this is the orderpage, here you can order a carport. Please enter measure
                 <div class="row mb-3">
                     <label class="col-sm-1 col-form-label" for="length">Length</label>
                     <div class="col-sm-4">
-                        <input id="length" class="form-control" type="text" name="length" value="${param.length}" placeholder="Enter length">
+                        <select name="length" id="length">
+                            <option value="240">240cm</option>
+                            <option value="270">270cm</option>
+                            <option value="300">300cm</option>
+                            <option value="330">330cm</option>
+                            <option value="360">360cm</option>
+                            <option value="390">390cm</option>
+                            <option value="420">420cm</option>
+                            <option value="450">450cm</option>
+                            <option value="480">480cm</option>
+                            <option value="510">510cm</option>
+                            <option value="540">540cm</option>
+                            <option value="570">570cm</option>
+                            <option value="600">600cm</option>
+                            <option value="630">630cm</option>
+                            <option value="660">660cm</option>
+                            <option value="690">690cm</option>
+                            <option value="720">720cm</option>
+                            <option value="750">750cm</option>
+                            <option value="780">780cm</option>
+                        </select>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <label class="col-sm-1 col-form-label" for="width">Width</label>
                     <div class="col-sm-4">
-                        <input id="width" class="form-control" type="text" name="width" value="${param.width}" placeholder="Enter width">
+                        <select name="width" id="width">
+                            <option value="240">240cm</option>
+                            <option value="270">270cm</option>
+                            <option value="300">300cm</option>
+                            <option value="330">330cm</option>
+                            <option value="360">360cm</option>
+                            <option value="390">390cm</option>
+                            <option value="420">420cm</option>
+                            <option value="450">450cm</option>
+                            <option value="480">480cm</option>
+                            <option value="510">510cm</option>
+                            <option value="540">540cm</option>
+                            <option value="570">570cm</option>
+                            <option value="600">600cm</option>
+                        </select>
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -42,7 +76,7 @@ Hello, this is the orderpage, here you can order a carport. Please enter measure
 
                 </div>
 
-                <input class="btn btn-primary" type="submit" type="submit" value="Submit">
+                <input class="btn btn-primary" type="submit" value="Submit">
             </form>
 
             <c:if test="${requestScope.error != null }">
