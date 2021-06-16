@@ -16,8 +16,7 @@
         <p>
         <c:forEach var="orderItem" items="${requestScope.orderItems}">
             <p>
-                    <!--OrderID: ${orderItem.ordreId}  Description: ${orderItem.description}  Amount: ${orderItem.amount}  Price: ${orderItem.price}
-                -->
+
             <table class="table">
             <thead>
             <tr>
@@ -39,9 +38,6 @@
 
             </p>
         </c:forEach>
-<!--TODO: Hent ordreId fra requestobjektet.
-        Det vil sige: google jsp retrieve value from radio button
-        requestobjekt mister information?-->
 
         </p>
     </jsp:body>

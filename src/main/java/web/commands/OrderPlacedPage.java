@@ -7,6 +7,7 @@ public class OrderPlacedPage extends CommandProtectedPage {
     public OrderPlacedPage(String orderplaced, String customer) {
         super(orderplaced, customer);
     }
+
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         return pageToShow;

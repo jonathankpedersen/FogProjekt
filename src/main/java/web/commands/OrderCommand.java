@@ -3,6 +3,7 @@ package web.commands;
 import business.entities.Order;
 import business.exceptions.UserException;
 import business.services.OrderFacade;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -25,6 +26,7 @@ public class OrderCommand extends CommandProtectedPage {
         boolean shed;
         Order order;
 
+        //Order is created here
         try {
             kundeId = ((int) session.getAttribute("kundeId"));
 
@@ -40,7 +42,7 @@ public class OrderCommand extends CommandProtectedPage {
             shed = false;
             order = null;
 
-
+            //Orders are shown here
             try {
                 List<Order> orderList = orderFacade.listOrderByCustomerId(kundeId);
                 request.setAttribute("orderlist", orderList);
@@ -48,15 +50,11 @@ public class OrderCommand extends CommandProtectedPage {
                 u.printStackTrace();
             }
 
-
         }
         session.setAttribute("length", length);
         session.setAttribute("width", width);
         session.setAttribute("shed", shed);
 
-        //TODO:Add error message for general issues e.g. "Something went wrong"
-        //TODO:Add error message for invalid chararacters such as letter instead of numbers e.g. "Please enter numbers"
-        //TODO:Add clarification for unit to be used for the customers measurements
         return pageToShow;
     }
 }

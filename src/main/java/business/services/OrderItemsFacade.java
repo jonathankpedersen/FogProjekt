@@ -39,7 +39,7 @@ public class OrderItemsFacade {
 
         try {
             orderItemsList = orderItemsMapper.getOrderItemsByOrderId(id);
-        } catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return orderItemsList;

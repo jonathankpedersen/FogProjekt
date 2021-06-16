@@ -3,6 +3,7 @@ package business.persistence;
 import business.entities.Order;
 import business.entities.OrderItems;
 import business.exceptions.UserException;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +14,8 @@ public class OrderItemsMapper {
     public OrderItemsMapper(Database database) {
         this.database = database;
     }
-//OrderItems orderItems = orderItemsMapper.createOrderItem(numberOfBeams, order.getKunde_Id(), myRafter.getDescription(), Conf.DEFAULTRAFTERLENGTH, order.getWidth());
+
+    //OrderItems orderItems = orderItemsMapper.createOrderItem(numberOfBeams, order.getKunde_Id(), myRafter.getDescription(), Conf.DEFAULTRAFTERLENGTH, order.getWidth());
     public OrderItems createOrderItem(int numOfMaterials, int materialeId, String description, int length, int ordreId, double price) throws UserException {
         OrderItems orderItems = null;
         try (Connection connection = database.connect()) {
@@ -126,9 +128,9 @@ public class OrderItemsMapper {
             orderItems.setOrdreItemId(orderItemId);
             orderItemsList.add(orderItems);
         }
-if(orderItemsList.size() == 0){
-    throw new SQLException("No items");
-}
+        if (orderItemsList.size() == 0) {
+            throw new SQLException("No items");
+        }
         return orderItemsList;
     }
 }

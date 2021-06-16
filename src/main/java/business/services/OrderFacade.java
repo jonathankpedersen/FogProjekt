@@ -12,7 +12,7 @@ import java.util.List;
 public class OrderFacade {
     OrderMapper orderMapper;
     Database database;
-    //double pris; //Ændres til udregning af prisen
+    //double pris; //Ændres til udregning af prisen// er gjort?
 
     public OrderFacade(Database database /*double pris*/)
     {

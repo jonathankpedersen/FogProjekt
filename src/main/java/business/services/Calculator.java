@@ -12,17 +12,15 @@ public class Calculator {
     }
 
     public int getRafter(int length) {
-        int numOfRafter = length/Conf.ROOFWIDTHUNIT;
+        int numOfRafter = length / Conf.ROOFWIDTHUNIT;
 
         return numOfRafter;
     }
 
-    public double getMaterialPrice(double pricePrUnit, int length, int numberOfItems){
-        double price = ((length/100.0)*numberOfItems*pricePrUnit);
+    public double getMaterialPrice(double pricePrUnit, int length, int numberOfItems) {
+        double price = ((length / 100.0) * numberOfItems * pricePrUnit);
 
         return price;
     }
 
-    //TODO: Beregn antal og prisen på det antal enheder der laves.
-    //TODO: Lav en calculator som kan returnere dette
 }

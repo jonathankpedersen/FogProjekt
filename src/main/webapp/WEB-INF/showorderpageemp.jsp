@@ -20,14 +20,12 @@
            <p>
 
                <INPUT TYPE="radio" name="orderid" value="${order.ordreId}"/> Order ${order.ordreId} ${order.status} from customer number ${order.kunde_Id}
-               <!-- TODO: Det her skal pakkes ind så hver linje har en radioboks, skal pakkes ind i et formtag med action=-->
+
            </p>
        </c:forEach>
         <INPUT TYPE="submit" VALUE="submit" />
         </form>
 
-        <!--<form name="login" action="${pageContext.request.contextPath}/fc/orderpageemp"  method="POST">
-            <button class="btn btn-primary" type="submit" value="orderpage">Orders</button>-->
         </form>
     </jsp:body>
 

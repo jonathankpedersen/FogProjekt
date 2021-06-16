@@ -1,6 +1,5 @@
 package web.commands;
 
-import business.Util.Conf;
 import business.entities.Material;
 import business.entities.Order;
 import business.entities.OrderItems;
@@ -24,17 +23,12 @@ public class CustomerMaterialList extends CommandProtectedPage {
         materialFacade = new MaterialFacade(database);
     }
 
-    //TODO:OrderItems skal sendes med. Antal af materialer skal med andetsteds fra. Kan beregnes ud fra indsendte mål.
-    //TODO:Lav en calculator i stedet for en facade der kan opnå dette
-    //begynd beregning af hvor mange materialer ud fra eksisterende ordrer
-
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         List<String> materialList = materialFacade.getAllMaterial();
         OrderItemsFacade orderItemsFacade = new OrderItemsFacade(database);
         OrderMapper orderMapper = new OrderMapper(database);
         OrderItemsMapper orderItemsMapper = new OrderItemsMapper(database);
-        //TODO: OrderItemsmapper og facade skal passe sammen
         Calculator calculator = new Calculator();
         int ordreId = Integer.parseInt(request.getParameter("orderid"));
 
@@ -46,7 +40,6 @@ public class CustomerMaterialList extends CommandProtectedPage {
             System.out.println(orderItemsList);
         } catch (SQLException e) {
             //computing number of beams, poles and rafter
-
             try {
                 Order order = orderMapper.getOrderByOrderId(ordreId);
                 int numberOfBeams = calculator.getBeams(order.getLength());
@@ -76,19 +69,12 @@ public class CustomerMaterialList extends CommandProtectedPage {
                 request.setAttribute("orderItemsList", orderItemsList);
                 request.setAttribute("order", orderMapper.getOrderByOrderId(ordreId));
 
-                //TODO: Find materialet via service
-
             } catch (SQLException | UserException s) {
                 s.printStackTrace();
             }
         }
 
-        //Det der kommer fra jsp er key-value
-        //name = key, value = returværdien
 
-        //TODO: Dynamisk beregning af spær
-        //det skal kunne ses
-        //TODO: Fremstil orderItems ved at kombinere materialer med de ønskede mål
 
         return pageToShow;
     }

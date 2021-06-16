@@ -65,7 +65,6 @@ public class OrderMapper {
         } catch (SQLException | UserException ex) {
             throw new UserException(ex.getMessage());
         }
-
     }
 
     public List<Order> getAllOrders() throws UserException {
@@ -96,7 +95,6 @@ public class OrderMapper {
         } catch (SQLException | UserException ex) {
             throw new UserException(ex.getMessage());
         }
-
     }
 
     public Order getOrderByOrderId(int id) throws SQLException {
@@ -125,8 +123,5 @@ public class OrderMapper {
         //TODO: Lav sql update
         //String sql = UPDATE
     }
-
-    //getAllOrders
-
 
 }

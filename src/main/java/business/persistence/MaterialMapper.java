@@ -1,6 +1,7 @@
 package business.persistence;
 
 import business.entities.Material;
+
 import java.sql.*;
 
 public class MaterialMapper {
@@ -11,10 +12,9 @@ public class MaterialMapper {
     }
 
     public Material getMaterialByName(String name) {
-        //Tilføj kolonne "type"?
         Material material = null;
 
-        try (Connection connection = database.connect()){
+        try (Connection connection = database.connect()) {
             String sql = "SELECT * FROM materialer WHERE navn LIKE ?";
 
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -30,7 +30,7 @@ public class MaterialMapper {
                 material = new Material(materialeId, name, enhed, pris_pr_enhed, description);
             }
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
 
         }

@@ -11,7 +11,7 @@ public class Order {
     int amount;
 
 
-    public Order(int kunde_Id,int length, int width, boolean shed) {
+    public Order(int kunde_Id, int length, int width, boolean shed) {
         this.kunde_Id = kunde_Id;
         this.length = length;
         this.width = width;
@@ -60,7 +60,7 @@ public class Order {
         this.prisTotal = prisTotal;
     }
 
-    public int getOrdreId(int ordreId){
+    public int getOrdreId(int ordreId) {
         return ordreId;
     }
 

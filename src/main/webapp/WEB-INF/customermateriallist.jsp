@@ -19,7 +19,7 @@
         <c:forEach items="${requestScope.matList}" var="item">
             <p>${item}</p>
         </c:forEach>
-        <!--Denne side skal designes/mockup-->
+
 
 
 

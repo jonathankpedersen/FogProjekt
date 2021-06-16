@@ -29,7 +29,6 @@ class OrderMapperTest {
     @BeforeEach
     void setUp() throws ClassNotFoundException {
         database = new Database(USER, PASSWORD,URL);
-        //TODO: Lav en testdatabase, skal køre beforeeach
         orderMapper = new OrderMapper(database);
     }
 

@@ -40,19 +40,6 @@
            </p>
        </c:forEach>
 
-        <!--<div class="row mb-3">
-            <label class="col-sm-1 col-form-label" for="orderId">Calculate Price</label>
-            <div class="col-sm-4">
-                <input id="orderId" class="form-control" type="text" name="orderId" value="${param.orderId}" placeholder="Enter order ID">
-            </div>
-        </div>
-
-        <input class="btn btn-primary" type="submit" type="submit" value="Submit">
-        </form>
-        <c:forEach items="${requestScope.price}" var="item">
-            <p>${item}</p>
-        </c:forEach>-->
-
     </jsp:body>
 
 </t:genericpage>

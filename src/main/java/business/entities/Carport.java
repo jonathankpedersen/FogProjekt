@@ -4,6 +4,7 @@ public class Carport {
     String length;
     String width;
     String shed;
+    //redundant?
 
     public Carport(String length, String width, String shed) {
         this.length = length;

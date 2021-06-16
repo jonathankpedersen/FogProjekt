@@ -12,11 +12,6 @@
         <h1>Hello ${sessionScope.email} </h1>
         You are now logged in as a EMPLOYEE.
 
-        <!--<p>
-        <form name="login" action="${pageContext.request.contextPath}/fc/customermateriallist"  method="POST">
-            <button class="btn btn-primary" type="submit" value="customermateriallist">Materials</button>
-        </form>
-        </p>-->
         <p>
         <form name="login" action="${pageContext.request.contextPath}/fc/listorderpageemp"  method="POST">
             <button class="btn btn-primary" type="submit" value="showorderpage">View Orders</button>

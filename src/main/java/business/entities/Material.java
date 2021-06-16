@@ -7,8 +7,6 @@ public class Material {
     double pris_pr_enhed;
     String description;
 
-    //Sæt længder ind på materialer
-
     public Material(int materiale_Id, String navn, String enhed, double pris_pr_enhed, String description) {
         this.materiale_Id = materiale_Id;
         this.navn = navn;

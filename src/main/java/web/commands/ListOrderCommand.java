@@ -19,9 +19,7 @@ public class ListOrderCommand extends CommandProtectedPage {
     }
 
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response)  {
-        //TODO: Find all orders by customerID and return
-        //TODO: Find facaden til entiten - Lav metoden
+    public String execute(HttpServletRequest request, HttpServletResponse response) {
         int customerId = Integer.parseInt(request.getParameter("kundeId"));
 
         try {
@@ -35,7 +33,7 @@ public class ListOrderCommand extends CommandProtectedPage {
             }
             request.setAttribute("priceList", priceList);*/
 
-        } catch (UserException u){
+        } catch (UserException u) {
             u.printStackTrace();
         }
         try {
@@ -46,7 +44,7 @@ public class ListOrderCommand extends CommandProtectedPage {
             int price = calc.calculatePrice();
             request.setAttribute("price", price);
 
-        }catch (SQLException | UserException e){
+        } catch (SQLException | UserException e) {
             e.printStackTrace();
         }
 
